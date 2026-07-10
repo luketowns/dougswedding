@@ -88,7 +88,7 @@
         }
 
         .container {
-            max-width: 1200px; /* Widened slightly to give a clean 4-column desktop layout room to breathe */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
@@ -170,7 +170,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             border-top: 3px solid var(--forest-green);
             display: flex;
-            flex-direction: column; /* Flex layout allows items inside to vertically align smoothly */
+            flex-direction: column;
         }
 
         .card h3 {
@@ -180,13 +180,60 @@
             font-size: 1.3rem;
         }
 
-        .card-image {
+        /* Card Photo Gallery Container Styles */
+        .gallery-container {
+            position: relative;
             width: 100%;
             height: 160px;
-            object-fit: cover;
-            border-radius: 2px;
             margin-bottom: 1.2rem;
+            overflow: hidden;
+            border-radius: 2px;
         }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 1;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--forest-green);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            user-select: none;
+        }
+
+        .gallery-btn:hover {
+            background: var(--white);
+        }
+
+        .prev-btn { left: 8px; }
+        .next-btn { right: 8px; }
 
         .badge {
             display: inline-block;
@@ -210,7 +257,7 @@
         }
 
         .amenities-list {
-            margin-top: auto; /* Pushes list items evenly to the base of the card content */
+            margin-top: auto;
             padding-top: 1rem;
             border-top: 1px solid rgba(0,0,0,0.05);
             font-size: 0.9rem;
@@ -355,7 +402,12 @@
                     
                     <!-- Option 1: Villas -->
                     <div class="card">
-                        <img src="images/villa.jpg" alt="Footprints Resort Villa" class="card-image">
+                        <div class="gallery-container">
+                            <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
+                            <img src="images/villa.jpg" alt="Boutique Villas Exterior" class="gallery-slide active">
+                            <img src="images/villa2.jpg" alt="Boutique Villas Interior" class="gallery-slide">
+                            <button class="gallery-btn next-btn" onclick="moveSlide(this, 1)">&gt;</button>
+                        </div>
                         <span class="badge">Lakeside Luxury</span>
                         <h3>Boutique Villas</h3>
                         <p class="price">$315 <span style="font-size: 0.85rem; font-weight: 300; color: #666;">/ night</span></p>
@@ -370,7 +422,12 @@
 
                     <!-- Option 2: Cabins -->
                     <div class="card">
-                        <img src="images/cabin.jpg" alt="Footprints Resort Cabin" class="card-image">
+                        <div class="gallery-container">
+                            <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
+                            <img src="images/cabin.jpg" alt="Traditional Cabins View 1" class="gallery-slide active">
+                            <img src="images/cabin2.jpg" alt="Traditional Cabins View 2" class="gallery-slide">
+                            <button class="gallery-btn next-btn" onclick="moveSlide(this, 1)">&gt;</button>
+                        </div>
                         <span class="badge">Rustic Experience</span>
                         <h3>Traditional Cabins</h3>
                         <p class="price">$225 <span style="font-size: 0.85rem; font-weight: 300; color: #666;">/ night</span></p>
@@ -383,7 +440,12 @@
 
                     <!-- Option 3: Motel King -->
                     <div class="card">
-                        <img src="images/motel-king.jpg" alt="Footprints Resort Motel Room King" class="card-image">
+                        <div class="gallery-container">
+                            <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
+                            <img src="images/motel-king.jpg" alt="Motel Room King Bed View 1" class="gallery-slide active">
+                            <img src="images/motel-king2.jpg" alt="Motel Room King Bed View 2" class="gallery-slide">
+                            <button class="gallery-btn next-btn" onclick="moveSlide(this, 1)">&gt;</button>
+                        </div>
                         <span class="badge">Modern Comfort</span>
                         <h3>Motel Room (King)</h3>
                         <p class="price">$314 <span style="font-size: 0.85rem; font-weight: 300; color: #666;">/ night</span></p>
@@ -397,7 +459,12 @@
 
                     <!-- Option 4: Motel Double Queen -->
                     <div class="card">
-                        <img src="images/motel-double.jpg" alt="Footprints Resort Motel Room Double Queen" class="card-image">
+                        <div class="gallery-container">
+                            <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
+                            <img src="images/motel-double.jpg" alt="Motel Room Double Queen View 1" class="gallery-slide active">
+                            <img src="images/motel-double2.jpg" alt="Motel Room Double Queen View 2" class="gallery-slide">
+                            <button class="gallery-btn next-btn" onclick="moveSlide(this, 1)">&gt;</button>
+                        </div>
                         <span class="badge">Shared Space</span>
                         <h3>Motel Room (Double Queen)</h3>
                         <p class="price">$314 <span style="font-size: 0.85rem; font-weight: 300; color: #666;">/ night</span></p>
@@ -419,8 +486,9 @@
         <p>See you by the lake.</p>
     </footer>
 
-    <!-- Tab Switching Logic -->
+    <!-- Interactive Scripts -->
     <script>
+        // Tab Switching Logic
         function switchTab(event, tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -432,6 +500,22 @@
             event.currentTarget.classList.add('active');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mini Card Slider Logic
+        function moveSlide(button, direction) {
+            const container = button.parentElement;
+            const slides = container.querySelectorAll('.gallery-slide');
+            
+            let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+            
+            slides[activeIndex].classList.remove('active');
+            
+            activeIndex += direction;
+            if (activeIndex >= slides.length) activeIndex = 0;
+            if (activeIndex < 0) activeIndex = slides.length - 1;
+            
+            slides[activeIndex].classList.add('active');
         }
     </script>
 </body>
