@@ -88,7 +88,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px; /* Slightly wider to let 3 columns breathe beautifully on laptop */
             margin: 0 auto;
             padding: 3rem 2rem;
         }
@@ -146,38 +146,21 @@
             display: block;
         }
 
-        /* Cards and Grids */
-        .grid {
+        /* The Separate Layout Grids */
+        .grid-2 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* 2 columns for details */
             gap: 2rem;
             margin-top: 2rem;
             text-align: left;
         }
 
-        @media (max-width: 768px) {
-            /* This now handles BOTH grids when the screen gets smaller than a standard tablet */
-            .grid-3, .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            header h1 {
-                font-size: 2.8rem;
-            }
-            .container {
-                padding: 2.5rem 1.25rem;
-            }
-            header {
-                padding: 4rem 1.5rem 3rem 1.5rem;
-            }
-            .hero-image-container {
-                height: 300px;
-                margin-bottom: 2.5rem;
-            }
-            .tab-btn {
-                padding: 1rem 1.2rem;
-                font-size: 0.8rem;
-            }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Clean 3 columns side-by-side for accommodations */
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
         }
 
         .card {
@@ -232,6 +215,32 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
+
+        /* Responsive Media Query Breakpoint */
+        @media (max-width: 850px) {
+            /* On anything smaller than a laptop, snap both styles to a single clean vertical layout */
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            header h1 {
+                font-size: 2.8rem;
+            }
+            .container {
+                padding: 2.5rem 1.25rem;
+            }
+            header {
+                padding: 4rem 1.5rem 3rem 1.5rem;
+            }
+            .hero-image-container {
+                height: 300px;
+                margin-bottom: 2.5rem;
+            }
+            .tab-btn {
+                padding: 1rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -252,9 +261,8 @@
         <!-- ================= HOME TAB ================= -->
         <div id="home-tab" class="tab-content active">
             
-            <!-- Engagement Photo Placeholder Section -->
             <div class="hero-image-container">
-                <img src="images/engagement.jpg" alt="Luke and his partner's engagement photo">
+                <img src="images/engagement.jpg" alt="Luke and Sierrah's engagement photo">
             </div>
 
             <section id="welcome">
@@ -265,7 +273,7 @@
 
             <section id="details">
                 <h2>When & Where</h2>
-                <div class="grid">
+                <div class="grid-2"> <!-- Uses the 2-column layout style -->
                     <div class="card">
                         <h3>The Venue</h3>
                         <p><strong>Footprints Resort</strong><br>
@@ -296,7 +304,7 @@
                 <h2>Where to Stay</h2>
                 <p>Footprints is a boutique resort with unique, cozy spaces. Accommodation options range from traditional rustic log cabins to modern lakeside rooms.</p>
                 
-                <div class="grid">
+                <div class="grid-3"> <!-- Uses the 3-column layout style -->
                     <div class="card">
                         <span class="badge">Rustic Experience</span>
                         <h3>Traditional Log Cabins</h3>
@@ -327,19 +335,15 @@
     <!-- Tab Switching Logic -->
     <script>
         function switchTab(event, tabId) {
-            // Hide all tab content
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Deactivate all tab buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Show current tab and set active class on button
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
             
-            // Scroll back to top of page content seamlessly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
