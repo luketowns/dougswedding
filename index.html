@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding Weekend | Footprints Resort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #2C4230;
+            --warm-earth: #8C6A5A;
+            --soft-cream: #F9F6F0;
+            --charcoal: #333333;
+            --white: #ffffff;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--forest-green);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--forest-green);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: var(--warm-earth);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #4A4A4A;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-top: 3px solid var(--forest-green);
+        }
+
+        .detail-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Google Form Integration */
+        .form-container {
+            position: relative;
+            width: 100%;
+            padding-top: 120%; /* Controls the aspect ratio of the iframe */
+            margin-top: 2rem;
+        }
+
+        .form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: var(--forest-green);
+            color: var(--white);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Replace with your names -->
+        <h1>Luke & Partner</h1>
+        <p>Are Getting Married</p>
+        <p style="font-size: 1rem; margin-top: 0.5rem; color: var(--warm-earth);">Footprints Resort &bull; Ontario</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="welcome">
+            <h2>The Weekend</h2>
+            <p>We can't wait to celebrate our wedding with you at Footprints Resort. We've envisioned a relaxed weekend getaway surrounded by old-growth trees, the private lake, and good company.</p>
+            <p>Pack comfortable clothes, your swimsuit, and your favorite cabin layers for when the sun goes down over the water.</p>
+        </section>
+
+        <section id="details">
+            <h2>When & Where</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>The Venue</h3>
+                    <p><strong>Footprints Resort</strong><br>
+                    Hastings Highlands, ON<br>
+                    An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.</p>
+                </div>
+                <div class="detail-card">
+                    <h3>The Timeline</h3>
+                    <p><strong>Friday Arrival:</strong> Check-in & lakeside campfire welcoming.<br><br>
+                    <strong>Saturday:</strong> Ceremony followed by dinner, drinks, and celebrating under the stars.<br><br>
+                    <strong>Sunday:</strong> Morning coffee, casual brunch, and departure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="rsvp">
+            <h2>RSVP & Details</h2>
+            <p>Please let us know if you can make it by completing our quick response form below. Let us know about any dietary restrictions or accommodation preferences for the weekend.</p>
+            
+            <!-- GOOGLE FORM EMBED -->
+            <div class="form-container">
+                <!-- paste your custom Google Form iframe URL source below -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDGoesHere/viewform?embedded=true">Loading…</iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>See you by the lake.</p>
+    </footer>
+
+</body>
+</html>
