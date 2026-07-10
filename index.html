@@ -14,6 +14,7 @@
             --soft-cream: #F9F6F0;
             --charcoal: #333333;
             --white: #ffffff;
+            --light-sage: #E2EAE4;
         }
 
         * {
@@ -33,7 +34,7 @@
             background-color: var(--forest-green);
             color: var(--white);
             text-align: center;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem 3rem 2rem;
         }
 
         header h1 {
@@ -45,20 +46,63 @@
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 300;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
+        /* Tab Navigation */
+        nav {
+            background-color: var(--forest-green);
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 1.2rem 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--white);
+        }
+
+        .tab-btn.active {
+            color: var(--white);
+            border-bottom: 2px solid var(--warm-earth);
+            font-weight: 500;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
+        }
+
+        /* Tab Content Control */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             text-align: center;
         }
 
@@ -67,7 +111,6 @@
             color: var(--forest-green);
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
-            position: relative;
         }
 
         h2::after {
@@ -85,7 +128,25 @@
             color: #4A4A4A;
         }
 
-        .details-grid {
+        /* Image Styling */
+        .hero-image-container {
+            width: 100%;
+            max-height: 450px;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Cards and Grids */
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
@@ -93,31 +154,44 @@
             text-align: left;
         }
 
-        @media (max-width: 600px) {
-            .details-grid {
+        @media (max-width: 700px) {
+            .grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .detail-card {
+        .card {
             background: var(--white);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 4px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
             border-top: 3px solid var(--forest-green);
         }
 
-        .detail-card h3 {
+        .card h3 {
             font-family: 'Playfair Display', serif;
             color: var(--forest-green);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
         }
 
-        /* Google Form Integration */
+        .badge {
+            display: inline-block;
+            background-color: var(--light-sage);
+            color: var(--forest-green);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
         .form-container {
             position: relative;
             width: 100%;
-            padding-top: 120%; /* Controls the aspect ratio of the iframe */
+            padding-top: 120%;
             margin-top: 2rem;
         }
 
@@ -128,7 +202,6 @@
             width: 100%;
             height: 100%;
             border: none;
-            background: transparent;
         }
 
         footer {
@@ -144,48 +217,92 @@
 <body>
 
     <header>
-        <!-- Replace with your names -->
-        <h1>Luke & Sierrah</h1>
-        <p>Are Getting Married</p>
-        <p style="font-size: 1rem; margin-top: 0.5rem; color: var(--warm-earth);">Footprints Resort &bull; Ontario</p>
+        <h1>Luke & Partner</h1>
+        <p>Our Wedding Weekend</p>
     </header>
+
+    <!-- Navigation Tabs -->
+    <nav>
+        <button class="tab-btn active" onclick="switchTab(event, 'home-tab')">The Weekend</button>
+        <button class="tab-btn" onclick="switchTab(event, 'cabins-tab')">Accommodations</button>
+    </nav>
 
     <div class="container">
         
-        <section id="welcome">
-            <h2>The Weekend</h2>
-            <p>We can't wait to celebrate our wedding with you at Footprints Resort. We've envisioned a relaxed weekend getaway surrounded by old-growth trees, the private lake, and good company.</p>
-            <p>Pack comfortable clothes, your swimsuit, and your favorite cabin layers for when the sun goes down over the water.</p>
-        </section>
-
-        <section id="details">
-            <h2>When & Where</h2>
-            <div class="details-grid">
-                <div class="detail-card">
-                    <h3>The Venue</h3>
-                    <p><strong>Footprints Resort</strong><br>
-                    Hastings Highlands, ON<br>
-                    An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.</p>
-                </div>
-                <div class="detail-card">
-                    <h3>The Timeline</h3>
-                    <p><strong>Friday Arrival:</strong> Check-in & lakeside campfire welcoming.<br><br>
-                    <strong>Saturday:</strong> Ceremony followed by dinner, drinks, and celebrating under the stars.<br><br>
-                    <strong>Sunday:</strong> Morning coffee, casual brunch, and departure.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="rsvp">
-            <h2>RSVP & Details</h2>
-            <p>Please let us know if you can make it by completing our quick response form below. Let us know about any dietary restrictions or accommodation preferences for the weekend.</p>
+        <!-- ================= HOME TAB ================= -->
+        <div id="home-tab" class="tab-content active">
             
-            <!-- GOOGLE FORM EMBED -->
-            <div class="form-container">
-                <!-- paste your custom Google Form iframe URL source below -->
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDGoesHere/viewform?embedded=true">Loading…</iframe>
+            <!-- Engagement Photo Placeholder Section -->
+            <div class="hero-image-container">
+                <img src="images/engagement.jpg" alt="Luke and his partner's engagement photo">
             </div>
-        </section>
+
+            <section id="welcome">
+                <h2>The Gathering</h2>
+                <p>We can't wait to celebrate our wedding with you at Footprints Resort. We've envisioned a relaxed weekend getaway surrounded by old-growth trees, the private lake, and good company.</p>
+                <p>Pack comfortable clothes, your swimsuit, and your favorite cabin layers for when the sun goes down over the water.</p>
+            </section>
+
+            <section id="details">
+                <h2>When & Where</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>The Venue</h3>
+                        <p><strong>Footprints Resort</strong><br>
+                        Hastings Highlands, ON<br>
+                        An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.</p>
+                    </div>
+                    <div class="card">
+                        <h3>The Timeline</h3>
+                        <p><strong>Friday Arrival:</strong> Check-in & lakeside campfire welcoming.<br><br>
+                        <strong>Saturday:</strong> Ceremony followed by dinner, drinks, and celebrating under the stars.<br><br>
+                        <strong>Sunday:</strong> Morning coffee, casual brunch, and departure.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rsvp">
+                <h2>RSVP & Details</h2>
+                <p>Please let us know if you can make it by completing our quick response form below.</p>
+                <div class="form-container">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfYourFormIDGoesHere/viewform?embedded=true">Loading…</iframe>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= ACCOMMODATIONS TAB ================= -->
+        <div id="cabins-tab" class="tab-content">
+            <section>
+                <h2>Where to Stay</h2>
+                <p>Footprints is a boutique resort with unique, cozy spaces. Accommodation options range from traditional rustic log cabins to modern lakeside rooms.</p>
+                
+                <div class="grid">
+                    <div class="card">
+                        <span class="badge">Rustic Experience</span>
+                        <h3>Traditional Log Cabins</h3>
+                        <p>Classic, free-standing lakeside cabins tucked into the trees. Features comfortable beds, essential amenities, and a front porch to take in the crisp morning air.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <span class="badge">Deluxe Comfort</span>
+                        <h3>The Villas & Suites</h3>
+                        <p>More spacious options with modern finishes, premium layouts, and panoramic views of the woods or private lakefront.</p>
+                    </div>
+
+                    <div class="card">
+                        <span class="badge">Cozy Setup</span>
+                        <h3>Resort Rooms</h3>
+                        <p>Convenient hotel-style rooms located closer to the main lodge and common spaces. Ideal for individuals or couples looking for a clean, simple home base.</p>
+                    </div>
+
+                    <div class="card">
+                        <span class="badge">Adventure Style</span>
+                        <h3>Glamping & Camping Sites</h3>
+                        <p>For those looking to truly immerse themselves in the Hastings Highlands forest environment, with access to all resort facilities.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
 
     </div>
 
@@ -193,5 +310,24 @@
         <p>See you by the lake.</p>
     </footer>
 
+    <!-- Tab Switching Logic -->
+    <script>
+        function switchTab(event, tabId) {
+            // Hide all tab content
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Deactivate all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show current tab and set active class on button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Scroll back to top of page content seamlessly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
