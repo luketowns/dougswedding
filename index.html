@@ -257,12 +257,13 @@
         }
 
         .amenities-list {
-            margin-top: auto;
+            margin-top: 0; /* Changed from auto to allow natural top-down stack */
             padding-top: 1rem;
             border-top: 1px solid rgba(0,0,0,0.05);
             font-size: 0.9rem;
             color: #555;
             list-style-type: none;
+            flex-grow: 1; /* Tells the list layout area to stretch, keeping bullets anchored to the top */
         }
 
         .amenities-list li {
@@ -376,7 +377,6 @@
         <p>September 3rd - 5th, 2027</p>
     </header>
 
-    <!-- Navigation Tabs -->
     <nav>
         <button class="tab-btn active" onclick="switchTab(event, 'home-tab')">The Weekend</button>
         <button class="tab-btn" onclick="switchTab(event, 'cabins-tab')">Accommodations</button>
@@ -384,7 +384,6 @@
 
     <div class="container">
         
-        <!-- ================= HOME TAB ================= -->
         <div id="home-tab" class="tab-content active">
             
             <div class="hero-image-container">
@@ -424,13 +423,11 @@
             </section>
         </div>
 
-        <!-- ================= ACCOMMODATIONS TAB ================= -->
         <div id="cabins-tab" class="tab-content">
             <section>
                 <h2>Where to Stay</h2>
                 <p>Footprints is a boutique resort with unique, cozy spaces. We have arranged exclusive guest options ranging from classic rustic cabins and villas to traditional motel options.</p>
                 
-                <!-- Elegant Callout Box Explaining Gifts & Lodging -->
                 <div class="info-note-box">
                     <h4>A Note on Gifts & Accommodations</h4>
                     <p>Having you celebrate with us by the lake is the absolute best gift we could ask for, so please, no wedding gifts. Because we want this weekend to be a shared getaway, we are instead asking our guests to cover the cost of their lodging. We hope this weekend away together gives us all time to unwind and connect!</p>
@@ -438,7 +435,6 @@
                 
                 <div class="grid-4">
                     
-                    <!-- Option 1: Villas -->s
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -458,7 +454,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 2: Cabins -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -476,7 +471,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 3: Motel King -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -495,7 +489,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 4: Motel Double Queen -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -524,7 +517,6 @@
         <p>See you by the lake.</p>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
         // Tab Switching Logic
         function switchTab(event, tabId) {
