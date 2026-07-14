@@ -15,6 +15,7 @@
             --charcoal: #333333;
             --white: #ffffff;
             --light-sage: #E2EAE4;
+            --gold-accent: #D4AF37;
         }
 
         * {
@@ -155,6 +156,14 @@
             text-align: left;
         }
 
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -257,13 +266,13 @@
         }
 
         .amenities-list {
-            margin-top: 0; /* Changed from auto to allow natural top-down stack */
+            margin-top: 0;
             padding-top: 1rem;
             border-top: 1px solid rgba(0,0,0,0.05);
             font-size: 0.9rem;
             color: #555;
             list-style-type: none;
-            flex-grow: 1; /* Tells the list layout area to stretch, keeping bullets anchored to the top */
+            flex-grow: 1;
         }
 
         .amenities-list li {
@@ -307,11 +316,33 @@
             line-height: 1.6;
         }
 
+        /* Color Palette Swatches */
+        .palette-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .deadline-text {
+            color: var(--warm-earth);
+            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
         .form-container {
             position: relative;
             width: 100%;
             padding-top: 120%;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
         .form-container iframe {
@@ -338,10 +369,14 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .grid-2, .grid-4 {
+            .grid-2, .grid-3, .grid-4 {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -384,6 +419,7 @@
 
     <div class="container">
         
+        <!-- ================= HOME TAB ================= -->
         <div id="home-tab" class="tab-content active">
             
             <div class="hero-image-container">
@@ -393,12 +429,13 @@
             <section id="welcome">
                 <h2>The Gathering</h2>
                 <p>We can't wait to celebrate our wedding with you at Footprints Resort. We've envisioned a relaxed weekend getaway surrounded by nature, the private lake, and good company.</p>
+                <p>To fully immerse ourselves in the natural surroundings and celebrate freely, we have chosen to make our wedding weekend a dedicated <strong>adults-only event (no kids)</strong>. We appreciate you making childcare arrangements so you can unplug with us!</p>
                 <p>Pack comfortable clothes, your swimsuit, and your favorite cabin layers for when the sun goes down over the water.</p>
             </section>
 
             <section id="details">
-                <h2>When & Where</h2>
-                <div class="grid-2">
+                <h2>Wedding Details</h2>
+                <div class="grid-3">
                     <div class="card">
                         <h3>The Venue</h3>
                         <p><strong>Footprints Resort</strong><br>
@@ -406,36 +443,62 @@
                         An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.</p>
                     </div>
                     <div class="card">
-                        <h3>The Timeline Sept 3rd - 5th, 2027</h3>
+                        <h3>The Dress Code</h3>
+                        <p><strong>Garden Formal</strong><br>
+                        Think elegant but practical for a woodland resort environment. Suits and midi or maxi dresses are perfect. Please choose footwear friendly to grassy lawns, lakeside wooden docks, and gravel paths.</p>
+                    </div>
+                    <div class="card">
+                        <h3>The Palette</h3>
+                        <p>If you'd like to complement our wedding aesthetic, we invite our guests to dress within our wedding color scheme:</p>
+                        <div class="palette-row">
+                            <div class="color-swatch" style="background-color: #2C4230;" title="Forest Green"></div>
+                            <div class="color-swatch" style="background-color: #E2EAE4;" title="Soft Sage"></div>
+                            <div class="color-swatch" style="background-color: #8C6A5A;" title="Warm Earth"></div>
+                            <div class="color-swatch" style="background-color: #F9F6F0;" title="Cream"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3>The Timeline</h3>
                         <p><strong>Friday Arrival:</strong> 3pm Check-in & lakeside campfire welcoming.<br><br>
                         <strong>Saturday:</strong> Ceremony followed by dinner, drinks, and celebrating under the stars.<br><br>
                         <strong>Sunday:</strong> Morning coffee, casual brunch, and 11am check-out.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Gift Registry</h3>
+                        <p>Your presence at our lakeside celebration is the greatest gift we could ask for, so <strong>we are not holding a traditional gift registry</strong>.</p>
+                        <p>Because we want this weekend to be an intimate shared vacation, we are instead asking guests to cover their lodging options on the property. We appreciate you making this trip with us!</p>
                     </div>
                 </div>
             </section>
 
             <section id="rsvp">
                 <h2>RSVP & Details</h2>
-                <p>Please let us know if you can make it by completing our quick response form below.</p>
+                <p class="deadline-text">Please submit your response by June 15th, 2027</p>
+                <p>Complete our quick response form below to lock in your attendance and cabin configurations.</p>
                 <div class="form-container">
                     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDJmLl9urI7UOfZnRoyTR4LIk0V2sGfZmZxKbbo9xQv4lOWw/viewform?usp=dialog">Loading…</iframe>
                 </div>
             </section>
         </div>
 
+        <!-- ================= ACCOMMODATIONS TAB ================= -->
         <div id="cabins-tab" class="tab-content">
             <section>
                 <h2>Where to Stay</h2>
                 <p>Footprints is a boutique resort with unique, cozy spaces. We have arranged exclusive guest options ranging from classic rustic cabins and villas to traditional motel options.</p>
                 
                 <div class="info-note-box">
-                    <h4>A Note on Gifts & Accommodations</h4>
+                    <h4>A Note on Lodging Selection</h4>
                     <p style="margin-bottom: 1.2rem;">Having you celebrate with us by the lake is the absolute best gift we could ask for, so please, no wedding gifts. Because we want this weekend to be a shared getaway, we are instead asking our guests to cover the cost of their lodging. We hope this weekend away together gives us all time to unwind and connect!</p>
-                    <p>As we are trying to maximize the number of guests who can attend if you can find a group of 3-4 people to stay in a Motel Room (Double Queen) our preference is to fill those first!</p>
+                    <p>As we are trying to maximize the number of guests who can attend, if you can find a group of 3-4 people to stay in a Motel Room (Double Queen), our preference is to fill those first!</p>
                 </div>
                 
                 <div class="grid-4">
                     
+                    <!-- Option 1: Villas -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -455,6 +518,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 2: Cabins -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -472,6 +536,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 3: Motel King -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -490,6 +555,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 4: Motel Double Queen -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
