@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Your custom color palette used as accents and display */
+            /* Your custom color palette (strictly for swatches / accents) */
             --thicket-green: #2D4A3E;
             --terracotta: #C86B51;
             --blush: #F1C5C1;
@@ -19,11 +19,12 @@
             --merlot: #5A202A;
             --soft-cream: #FDFBF7;
             
-            /* Clean, elegant UI mapping */
-            --ui-primary: var(--thicket-green); /* Classic deep green base */
-            --ui-accent: var(--terracotta);      /* Sophisticated warm rust accent */
-            --ui-light-bg: #F4EFEA;
-            --dark-text: #2D2522;
+            /* Minimalist UI Mapping */
+            --ui-bg: var(--soft-cream);
+            --ui-text-main: #2D2522;     /* Elegant dark charcoal */
+            --ui-text-muted: #7A6B66;    /* Muted warm gray for secondary text */
+            --ui-border: #E6DFD9;        /* Soft neutral line separator */
+            --ui-accent: var(--terracotta);
             --white: #ffffff;
         }
 
@@ -35,17 +36,17 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--soft-cream);
-            color: var(--dark-text);
+            background-color: var(--ui-bg);
+            color: var(--ui-text-main);
             line-height: 1.6;
         }
 
         header {
-            background-color: var(--ui-primary);
-            color: var(--white);
+            background-color: var(--ui-bg);
+            color: var(--ui-text-main);
             text-align: center;
-            padding: 5rem 2rem 3rem 2rem;
-            border-bottom: 3px solid var(--ui-accent);
+            padding: 6rem 2rem 4rem 2rem;
+            border-bottom: 1px solid var(--ui-border);
         }
 
         header h1 {
@@ -57,19 +58,24 @@
         }
 
         header p {
-            font-size: 1.1rem;
-            font-weight: 300;
+            font-size: 1rem;
+            font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--blush);
+            color: var(--ui-text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        header p:last-child {
+            margin-bottom: 0;
         }
 
         /* Tab Navigation */
         nav {
-            background-color: var(--ui-primary);
+            background-color: var(--ui-bg);
             display: flex;
             justify-content: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--ui-border);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -78,7 +84,7 @@
         .tab-btn {
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--ui-text-muted);
             padding: 1.2rem 2rem;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
@@ -86,22 +92,23 @@
             letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
 
         .tab-btn:hover {
-            color: var(--white);
+            color: var(--ui-text-main);
         }
 
         .tab-btn.active {
-            color: var(--white);
-            border-bottom: 3px solid var(--ui-accent);
+            color: var(--ui-text-main);
+            border-bottom: 3px solid var(--ui-text-main);
             font-weight: 500;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
         }
 
         /* Tab Content Control */
@@ -114,13 +121,13 @@
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             text-align: center;
         }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--ui-primary);
+            color: var(--ui-text-main);
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
         }
@@ -128,10 +135,10 @@
         h2::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 2px;
-            background-color: var(--ui-accent);
-            margin: 0.5rem auto 0 auto;
+            width: 50px;
+            height: 1px;
+            background-color: var(--ui-text-muted);
+            margin: 0.75rem auto 0 auto;
         }
 
         p {
@@ -143,12 +150,12 @@
         /* Image Styling */
         .hero-image-container {
             width: 100%;
-            max-height: 450px;
+            max-height: 480px;
             overflow: hidden;
-            border-radius: 6px;
-            margin-bottom: 3rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 4px;
+            margin-bottom: 4rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--ui-border);
         }
 
         .hero-image-container img {
@@ -185,23 +192,18 @@
 
         .card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border-top: 4px solid var(--ui-primary);
+            padding: 2.2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid var(--ui-border);
             display: flex;
             flex-direction: column;
         }
 
-        /* Subtle alteration for cards to look unified but interesting */
-        .card:nth-child(even) {
-            border-top: 4px solid var(--ui-accent);
-        }
-
         .card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--ui-primary);
-            margin-bottom: 0.5rem;
+            color: var(--ui-text-main);
+            margin-bottom: 0.75rem;
             font-size: 1.3rem;
         }
 
@@ -212,7 +214,8 @@
             height: 160px;
             margin-bottom: 1.2rem;
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 2px;
+            border: 1px solid var(--ui-border);
         }
 
         .gallery-slide {
@@ -237,24 +240,24 @@
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.9);
-            color: var(--ui-primary);
-            border: none;
+            color: var(--ui-text-main);
+            border: 1px solid var(--ui-border);
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 0.8rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s ease;
+            transition: all 0.2s ease;
             user-select: none;
         }
 
         .gallery-btn:hover {
             background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .prev-btn { left: 8px; }
@@ -263,8 +266,8 @@
         .badge {
             display: inline-block;
             align-self: flex-start;
-            background-color: var(--ui-light-bg);
-            color: var(--ui-primary);
+            background-color: var(--ui-bg);
+            color: var(--ui-text-muted);
             padding: 0.2rem 0.6rem;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -272,6 +275,7 @@
             font-weight: 500;
             margin-bottom: 1rem;
             border-radius: 2px;
+            border: 1px solid var(--ui-border);
         }
 
         .price {
@@ -284,7 +288,7 @@
         .amenities-list {
             margin-top: 0;
             padding-top: 1rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid var(--ui-border);
             font-size: 0.9rem;
             color: #555;
             list-style-type: none;
@@ -299,7 +303,7 @@
 
         .amenities-list li::before {
             content: "•";
-            color: var(--ui-accent);
+            color: var(--ui-text-muted);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -310,16 +314,17 @@
             max-width: 750px;
             margin: 2rem auto 3.5rem auto;
             background-color: var(--white);
-            border-left: 4px solid var(--ui-accent);
+            border: 1px solid var(--ui-border);
+            border-left: 3px solid var(--ui-text-main);
             padding: 2rem;
-            border-radius: 0 6px 6px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
             text-align: left;
         }
 
         .info-note-box h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--ui-primary);
+            color: var(--ui-text-main);
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
             font-weight: 600;
@@ -346,7 +351,7 @@
             height: 44px;
             border-radius: 50%;
             border: 2px solid var(--white);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
             transition: transform 0.2s ease;
         }
 
@@ -366,6 +371,9 @@
             width: 100%;
             padding-top: 120%;
             margin-top: 1rem;
+            border: 1px solid var(--ui-border);
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .form-container iframe {
@@ -379,12 +387,13 @@
 
         footer {
             text-align: center;
-            padding: 3.5rem 2rem;
-            background-color: var(--ui-primary);
-            color: var(--white);
+            padding: 4rem 2rem;
+            background-color: var(--ui-bg);
+            color: var(--ui-text-muted);
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            border-top: 4px solid var(--ui-accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-top: 1px solid var(--ui-border);
         }
 
         /* Responsive Media Query Breakpoints */
@@ -405,13 +414,13 @@
                 gap: 2rem;
             }
             header h1 {
-                font-size: 2.8rem;
+                font-size: 2.6rem;
             }
             .container {
-                padding: 2.5rem 1.25rem;
+                padding: 3rem 1.25rem;
             }
             header {
-                padding: 4rem 1.5rem 3rem 1.5rem;
+                padding: 5rem 1.5rem 3rem 1.5rem;
             }
             .hero-image-container {
                 height: 300px;
@@ -443,6 +452,7 @@
 
     <div class="container">
         
+        <!-- ================= HOME TAB ================= -->
         <div id="home-tab" class="tab-content active">
             
             <div class="hero-image-container">
@@ -463,7 +473,9 @@
                         <h3>The Venue</h3>
                         <p><strong>Footprints Resort</strong><br>
                         Hastings Highlands, ON<br>
-                        An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.</p>
+                        An adults-only private eco-resort featuring cabins, a private beach, and beautiful woodland trails.<br>
+                            <br>
+                        2844 S Baptiste Lake Rd, Hastings Highlands, ON K0L 1C0</p>
                     </div>
                     <div class="card">
                         <h3>The Dress Code</h3>
@@ -510,6 +522,7 @@
             </section>
         </div>
 
+        <!-- ================= ACCOMMODATIONS TAB ================= -->
         <div id="cabins-tab" class="tab-content">
             <section>
                 <h2>Where to Stay</h2>
@@ -523,6 +536,7 @@
                 
                 <div class="grid-4">
                     
+                    <!-- Option 1: Villas -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -542,6 +556,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 2: Cabins -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -559,6 +574,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 3: Motel King -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -577,6 +593,7 @@
                         </ul>
                     </div>
 
+                    <!-- Option 4: Motel Double Queen -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
