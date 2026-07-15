@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Your custom color palette */
+            /* Your custom color palette used as accents and display */
             --thicket-green: #2D4A3E;
             --terracotta: #C86B51;
             --blush: #F1C5C1;
@@ -19,13 +19,12 @@
             --merlot: #5A202A;
             --soft-cream: #FDFBF7;
             
-            /* Functional system mappings */
-            --primary: var(--thicket-green);
-            --secondary: var(--terracotta);
-            --accent: var(--marigold);
+            /* Clean, elegant UI mapping */
+            --ui-primary: var(--thicket-green); /* Classic deep green base */
+            --ui-accent: var(--terracotta);      /* Sophisticated warm rust accent */
+            --ui-light-bg: #F4EFEA;
             --dark-text: #2D2522;
             --white: #ffffff;
-            --light-bg: #F4EFEA;
         }
 
         * {
@@ -42,11 +41,11 @@
         }
 
         header {
-            background-color: var(--primary);
+            background-color: var(--ui-primary);
             color: var(--white);
             text-align: center;
             padding: 5rem 2rem 3rem 2rem;
-            border-bottom: 4px solid var(--accent);
+            border-bottom: 3px solid var(--ui-accent);
         }
 
         header h1 {
@@ -67,7 +66,7 @@
 
         /* Tab Navigation */
         nav {
-            background-color: var(--primary);
+            background-color: var(--ui-primary);
             display: flex;
             justify-content: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -95,7 +94,7 @@
 
         .tab-btn.active {
             color: var(--white);
-            border-bottom: 3px solid var(--secondary);
+            border-bottom: 3px solid var(--ui-accent);
             font-weight: 500;
         }
 
@@ -121,7 +120,7 @@
 
         h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--primary);
+            color: var(--ui-primary);
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
         }
@@ -131,7 +130,7 @@
             display: block;
             width: 60px;
             height: 2px;
-            background-color: var(--secondary);
+            background-color: var(--ui-accent);
             margin: 0.5rem auto 0 auto;
         }
 
@@ -189,18 +188,19 @@
             padding: 2rem;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border-top: 4px solid var(--secondary);
+            border-top: 4px solid var(--ui-primary);
             display: flex;
             flex-direction: column;
         }
 
+        /* Subtle alteration for cards to look unified but interesting */
         .card:nth-child(even) {
-            border-top: 4px solid var(--accent);
+            border-top: 4px solid var(--ui-accent);
         }
 
         .card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--primary);
+            color: var(--ui-primary);
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
@@ -237,7 +237,7 @@
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.9);
-            color: var(--primary);
+            color: var(--ui-primary);
             border: none;
             width: 28px;
             height: 28px;
@@ -263,8 +263,8 @@
         .badge {
             display: inline-block;
             align-self: flex-start;
-            background-color: var(--light-bg);
-            color: var(--primary);
+            background-color: var(--ui-light-bg);
+            color: var(--ui-primary);
             padding: 0.2rem 0.6rem;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -299,7 +299,7 @@
 
         .amenities-list li::before {
             content: "•";
-            color: var(--secondary);
+            color: var(--ui-accent);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -310,7 +310,7 @@
             max-width: 750px;
             margin: 2rem auto 3.5rem auto;
             background-color: var(--white);
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--ui-accent);
             padding: 2rem;
             border-radius: 0 6px 6px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
@@ -319,7 +319,7 @@
 
         .info-note-box h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--merlot);
+            color: var(--ui-primary);
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
             font-weight: 600;
@@ -355,7 +355,7 @@
         }
 
         .deadline-text {
-            color: var(--terracotta);
+            color: var(--ui-accent);
             font-weight: 500;
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -380,11 +380,11 @@
         footer {
             text-align: center;
             padding: 3.5rem 2rem;
-            background-color: var(--primary);
+            background-color: var(--ui-primary);
             color: var(--white);
             font-size: 0.9rem;
             letter-spacing: 1px;
-            border-top: 4px solid var(--accent);
+            border-top: 4px solid var(--ui-accent);
         }
 
         /* Responsive Media Query Breakpoints */
@@ -443,7 +443,6 @@
 
     <div class="container">
         
-        <!-- ================= HOME TAB ================= -->
         <div id="home-tab" class="tab-content active">
             
             <div class="hero-image-container">
@@ -511,7 +510,6 @@
             </section>
         </div>
 
-        <!-- ================= ACCOMMODATIONS TAB ================= -->
         <div id="cabins-tab" class="tab-content">
             <section>
                 <h2>Where to Stay</h2>
@@ -525,7 +523,6 @@
                 
                 <div class="grid-4">
                     
-                    <!-- Option 1: Villas -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -545,7 +542,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 2: Cabins -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -563,7 +559,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 3: Motel King -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
@@ -582,7 +577,6 @@
                         </ul>
                     </div>
 
-                    <!-- Option 4: Motel Double Queen -->
                     <div class="card">
                         <div class="gallery-container">
                             <button class="gallery-btn prev-btn" onclick="moveSlide(this, -1)">&lt;</button>
