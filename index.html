@@ -9,13 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --forest-green: #2C4230;
-            --warm-earth: #8C6A5A;
-            --soft-cream: #F9F6F0;
-            --charcoal: #333333;
+            /* Your custom color palette */
+            --thicket-green: #2D4A3E;
+            --terracotta: #C86B51;
+            --blush: #F1C5C1;
+            --marigold: #EAA844;
+            --lilac: #D3C3DB;
+            --sky-blue: #A9CAD6;
+            --merlot: #5A202A;
+            --soft-cream: #FDFBF7;
+            
+            /* Functional system mappings */
+            --primary: var(--thicket-green);
+            --secondary: var(--terracotta);
+            --accent: var(--marigold);
+            --dark-text: #2D2522;
             --white: #ffffff;
-            --light-sage: #E2EAE4;
-            --gold-accent: #D4AF37;
+            --light-bg: #F4EFEA;
         }
 
         * {
@@ -27,15 +37,16 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--soft-cream);
-            color: var(--charcoal);
+            color: var(--dark-text);
             line-height: 1.6;
         }
 
         header {
-            background-color: var(--forest-green);
+            background-color: var(--primary);
             color: var(--white);
             text-align: center;
             padding: 5rem 2rem 3rem 2rem;
+            border-bottom: 4px solid var(--accent);
         }
 
         header h1 {
@@ -51,12 +62,12 @@
             font-weight: 300;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--soft-cream);
+            color: var(--blush);
         }
 
         /* Tab Navigation */
         nav {
-            background-color: var(--forest-green);
+            background-color: var(--primary);
             display: flex;
             justify-content: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -84,7 +95,7 @@
 
         .tab-btn.active {
             color: var(--white);
-            border-bottom: 2px solid var(--warm-earth);
+            border-bottom: 3px solid var(--secondary);
             font-weight: 500;
         }
 
@@ -110,7 +121,7 @@
 
         h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--forest-green);
+            color: var(--primary);
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
         }
@@ -118,16 +129,16 @@
         h2::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 1px;
-            background-color: var(--warm-earth);
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary);
             margin: 0.5rem auto 0 auto;
         }
 
         p {
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
-            color: #4A4A4A;
+            color: #4A3E3B;
         }
 
         /* Image Styling */
@@ -135,9 +146,10 @@
             width: 100%;
             max-height: 450px;
             overflow: hidden;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-bottom: 3rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .hero-image-container img {
@@ -175,16 +187,20 @@
         .card {
             background: var(--white);
             padding: 2rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            border-top: 3px solid var(--forest-green);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--secondary);
             display: flex;
             flex-direction: column;
         }
 
+        .card:nth-child(even) {
+            border-top: 4px solid var(--accent);
+        }
+
         .card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--forest-green);
+            color: var(--primary);
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
@@ -196,7 +212,7 @@
             height: 160px;
             margin-bottom: 1.2rem;
             overflow: hidden;
-            border-radius: 2px;
+            border-radius: 4px;
         }
 
         .gallery-slide {
@@ -220,8 +236,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.85);
-            color: var(--forest-green);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
             border: none;
             width: 28px;
             height: 28px;
@@ -247,8 +263,8 @@
         .badge {
             display: inline-block;
             align-self: flex-start;
-            background-color: var(--light-sage);
-            color: var(--forest-green);
+            background-color: var(--light-bg);
+            color: var(--primary);
             padding: 0.2rem 0.6rem;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -261,7 +277,7 @@
         .price {
             font-size: 1.2rem;
             font-weight: 500;
-            color: var(--warm-earth);
+            color: var(--merlot);
             margin-bottom: 1rem;
         }
 
@@ -283,7 +299,7 @@
 
         .amenities-list li::before {
             content: "•";
-            color: var(--warm-earth);
+            color: var(--secondary);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -294,16 +310,16 @@
             max-width: 750px;
             margin: 2rem auto 3.5rem auto;
             background-color: var(--white);
-            border-left: 4px solid var(--warm-earth);
+            border-left: 4px solid var(--accent);
             padding: 2rem;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 6px 6px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             text-align: left;
         }
 
         .info-note-box h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--forest-green);
+            color: var(--merlot);
             font-size: 1.25rem;
             margin-bottom: 0.75rem;
             font-weight: 600;
@@ -319,20 +335,27 @@
         /* Color Palette Swatches */
         .palette-row {
             display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            justify-content: center;
         }
 
         .color-swatch {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            border: 2px solid var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
         }
 
         .deadline-text {
-            color: var(--warm-earth);
+            color: var(--terracotta);
             font-weight: 500;
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -356,11 +379,12 @@
 
         footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background-color: var(--forest-green);
+            padding: 3.5rem 2rem;
+            background-color: var(--primary);
             color: var(--white);
             font-size: 0.9rem;
             letter-spacing: 1px;
+            border-top: 4px solid var(--accent);
         }
 
         /* Responsive Media Query Breakpoints */
@@ -449,13 +473,15 @@
                     </div>
                     <div class="card">
                         <h3>The Palette</h3>
-                        <p>If you'd like to complement our wedding aesthetic, we invite our guests to dress within our wedding color scheme:</p>
+                        <p>If you'd like to complement our wedding aesthetic, we invite our guests to dress within our vibrant, forest-and-garden color scheme:</p>
                         <div class="palette-row">
-                            <div class="color-swatch" style="background-color: #2C4230;" title="Forest Green"></div>
-                            <div class="color-swatch" style="background-color: #E2EAE4;" title="Soft Sage"></div>
-                            <div class="color-swatch" style="background-color: #8C6A5A;" title="Warm Earth"></div>
-                            <div class="color-swatch" style="background-color: #F9F6F0;" title="Cream"></div>
-                            <div class="color-swatch" style="background-color: #D4AF37;" title="Gold Accent"></div>
+                            <div class="color-swatch" style="background-color: #2D4A3E;" title="Thicket Green"></div>
+                            <div class="color-swatch" style="background-color: #C86B51;" title="Terracotta"></div>
+                            <div class="color-swatch" style="background-color: #EAA844;" title="Marigold"></div>
+                            <div class="color-swatch" style="background-color: #F1C5C1;" title="Blush"></div>
+                            <div class="color-swatch" style="background-color: #D3C3DB;" title="Lilac"></div>
+                            <div class="color-swatch" style="background-color: #A9CAD6;" title="Sky Blue"></div>
+                            <div class="color-swatch" style="background-color: #5A202A;" title="Merlot"></div>
                         </div>
                     </div>
                 </div>
